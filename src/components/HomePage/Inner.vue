@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Header from '../components/Header.vue'
+import Header from '../Header.vue'
 import InnerContent from './InnerContent'
 export default {
   name: 'Inner',
@@ -19,7 +19,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass">
 .inner
-  background-image: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,0.6615021008403361) 10%), url(../img/inner-bg.jpg)
+  background-image: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,0.6615021008403361) 10%), url(../../img/inner-bg.jpg)
   background-repeat: no-repeat
   background-size: cover
   background-position: bottom

@@ -12,13 +12,13 @@
     <p></p>
     <p></p>
     <div class="mac-img">
-      <img src="../img/mac.png" alt="">
+      <img src="../../img/mac.png" alt="">
     </div>
     <div class="ipad-img">
-      <img src="../img/Ipad.png" alt="">
+      <img src="../../img/Ipad.png" alt="">
     </div>
     <div class="iphone-img">
-      <img src="../img/iphone.png" alt="">
+      <img src="../../img/iphone.png" alt="">
     </div>
   </div>
 </template>

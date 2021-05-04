@@ -8,9 +8,9 @@
 
 <script>
 // @ is an alias to /src
-import Inner from '../components/Inner.vue'
-import AboutBlock from '../components/AboutBlock'
-import MiniGallery from '../components/MiniGallery'
+import Inner from '../components/HomePage/Inner.vue'
+import AboutBlock from '../components/HomePage/AboutBlock'
+import MiniGallery from '../components/HomePage/MiniGallery'
 
 export default {
   name: 'Home',
