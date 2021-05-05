@@ -3,6 +3,7 @@
     <inner />
     <AboutBlock />
     <MiniGallery />
+    <Footer />
   </div>
 </template>
 
@@ -11,13 +12,15 @@
 import Inner from '../components/HomePage/Inner.vue'
 import AboutBlock from '../components/HomePage/AboutBlock'
 import MiniGallery from '../components/HomePage/MiniGallery'
+import Footer from '../components/Footer'
 
 export default {
   name: 'Home',
   components: {
     Inner,
     AboutBlock,
-    MiniGallery
+    MiniGallery,
+    Footer
   }
 }
 </script>

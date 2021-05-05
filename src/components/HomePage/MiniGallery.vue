@@ -58,24 +58,28 @@ export default {
         }
         // {
         //   id: 2,
+        //   active: true,
         //   left: '100%',
         //   animationLeft: false,
         //   animationRight: false,
         //   works: [
         //     {
-        //       id: 1,
+        //       id: 4,
         //       name: 'brand',
-        //       img: 'proj1.jpg'
+        //       img: 'proj2.jpg',
+        //       imgHeight: 965
         //     },
         //     {
-        //       id: 2,
+        //       id: 5,
         //       name: 'game',
-        //       img: 'proj1.jpg'
+        //       img: 'proj2.jpg',
+        //       imgHeight: 1345
         //     },
         //     {
-        //       id: 3,
+        //       id: 6,
         //       name: 'fengo',
-        //       img: 'proj3.jpg'
+        //       img: 'proj1.jpg',
+        //       imgHeight: 798
         //     }
         //   ]
         // }
