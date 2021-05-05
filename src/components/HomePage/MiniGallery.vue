@@ -5,10 +5,16 @@
   </div>
     <div class="mini-gallery__carousel">
       <div class="mini-gallery__inner">
-        <block v-for="block in workBlocks" v-bind:block="block" v-bind:key="block.id" v-bind:class="block.classObj"></block>
+          <block
+            v-for="block in workBlocks"
+            :block="block"
+            :key="block.id"
+            :style="{left: block.left}"
+            :class="{animationLeft: block.animationLeft, animationRight: block.animationRight}"
+          />
       </div>
-      <div class="mini-gallery__arrLeft"><i class="fa fa-chevron-left"></i></div>
-      <div class="mini-gallery__arrRight"><i class="fa fa-chevron-right"></i></div>
+      <div class="mini-gallery__arrLeft" @click="moveRight"><i class="fa fa-chevron-left"></i></div>
+      <div class="mini-gallery__arrRight" @click="moveLeft"><i class="fa fa-chevron-right"></i></div>
   </div>
 </section>
 </template>
@@ -25,77 +31,99 @@ export default {
       workBlocks: [
         {
           id: 1,
-          classObj: {
-            'mini-gallery__flex': true,
-            active: true
-          },
+          active: true,
+          left: '0',
+          animationLeft: false,
+          animationRight: false,
           works: [
             {
               id: 1,
               name: 'brand',
               img: 'proj1.jpg',
-              classObj: {
-                item: true,
-                active: false
-              }
+              imgHeight: 965
             },
             {
               id: 2,
               name: 'game',
               img: 'proj2.jpg',
-              classObj: {
-                item: true,
-                active: false
-              }
+              imgHeight: 1345
             },
             {
               id: 3,
               name: 'fengo',
               img: 'proj3.jpg',
-              classObj: {
-                item: true,
-                active: false
-              }
-            }
-          ]
-        },
-        {
-          id: 2,
-          classObj: {
-            'mini-gallery__flex': true,
-            active: false
-          },
-          works: [
-            {
-              id: 1,
-              name: 'brand',
-              img: 'proj1.jpg',
-              classObj: {
-                item: true,
-                active: false
-              }
-            },
-            {
-              id: 2,
-              name: 'game',
-              img: 'proj2.jpg',
-              classObj: {
-                item: true,
-                active: false
-              }
-            },
-            {
-              id: 3,
-              name: 'fengo',
-              img: 'proj3.jpg',
-              classObj: {
-                item: true,
-                active: false
-              }
+              imgHeight: 798
             }
           ]
         }
-      ]
+        // {
+        //   id: 2,
+        //   left: '100%',
+        //   animationLeft: false,
+        //   animationRight: false,
+        //   works: [
+        //     {
+        //       id: 1,
+        //       name: 'brand',
+        //       img: 'proj1.jpg'
+        //     },
+        //     {
+        //       id: 2,
+        //       name: 'game',
+        //       img: 'proj1.jpg'
+        //     },
+        //     {
+        //       id: 3,
+        //       name: 'fengo',
+        //       img: 'proj3.jpg'
+        //     }
+        //   ]
+        // }
+      ],
+      current: null,
+      next: null
+    }
+  },
+  methods: {
+    moveRight () {
+      this.current = this.workBlocks.find(el => parseInt(el.left) === 0)
+      if (this.workBlocks.length > 1) {
+        if (this.current.id >= this.workBlocks.length) {
+          this.current.animationLeft = true
+          const vm = this
+          // eslint-disable-next-line no-return-assign
+          setTimeout(() => vm.current.animationLeft = false, 200)
+        } else {
+          this.next = this.workBlocks.find(el => el.id > this.current.id)
+          this.current.left = '-100%'
+          this.next.left = '0'
+        }
+      } else {
+        this.current.animationLeft = true
+        const vm = this
+        // eslint-disable-next-line no-return-assign
+        setTimeout(() => vm.current.animationLeft = false, 200)
+      }
+    },
+    moveLeft: function () {
+      this.current = this.workBlocks.find(el => parseInt(el.left) === 0)
+      if (this.workBlocks.length > 1) {
+        if (this.current.id <= 1) {
+          this.current.animationRight = true
+          const vm = this
+          // eslint-disable-next-line no-return-assign
+          setTimeout(() => vm.current.animationRight = false, 200)
+        } else {
+          this.next = this.workBlocks.find(el => el.id < this.current.id)
+          this.current.left = '100%'
+          this.next.left = '0'
+        }
+      } else {
+        this.current.animationRight = true
+        const vm = this
+        // eslint-disable-next-line no-return-assign
+        setTimeout(() => vm.current.animationRight = false, 200)
+      }
     }
   }
 }
@@ -107,6 +135,7 @@ export default {
   background-color: #eeeeee
   text-align: center
   width: 100%
+  margin-bottom: 150px
   &__title
     font-size: 2.25em
     font-weight: 700
@@ -135,19 +164,28 @@ export default {
     height: 100%
     margin: 0 15%
     overflow: hidden
+    position: relative
+    display: flex
   &__flex
     width: 100%
     height: 100%
-    display: none
+    display: flex
     justify-content: space-between
-    &.active
-      display: flex
+    position: absolute
+    transition: left .6s linear
+    &.animationLeft
+      transform: translateX(-5px)
+    &.animationRight
+      transform: translateX(5px)
 .item
-  margin: 10px
+  margin: 10px 0
   height: 93%
-  width: 33%
+  width: 30%
   overflow: hidden
-  &.active > img
-    transition: transform 3s linear
-    transform: translateY(-70%)
+  position: relative
+  & > img
+    width: 100%
+    position: absolute
+    left: 0
+
 </style>

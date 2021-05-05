@@ -1,6 +1,10 @@
 <template>
-<div>
-  <item v-for="work in block.works" v-bind:work="work" v-bind:class="work.classObj" v-bind:key="work.id"></item>
+<div class="mini-gallery__flex">
+  <item
+    v-for="work in block.works"
+    v-bind:work="work"
+    v-bind:key="work.id"
+  />
 </div>
 </template>
 
@@ -15,6 +19,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="sass">
 
 </style>
