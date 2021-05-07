@@ -5,7 +5,7 @@
     </div>
     <nav>
       <ul class="menu">
-        <li class="menu__li active"><router-link class="menu__link active" to="/">Главная</router-link></li>
+        <li class="menu__li"><router-link class="menu__link" to="/">Главная</router-link></li>
         <li class="menu__li"><router-link class="menu__link" to="/about">Обо мне</router-link></li>
         <li class="menu__li"><router-link class="menu__link" to="/about">Мои работы</router-link></li>
         <li class="menu__li"><router-link class="menu__link" to="/about">Контакты</router-link></li>

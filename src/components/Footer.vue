@@ -2,7 +2,7 @@
 <footer class="footer">
   <div class="footer__contact container">
     <SocialLinks />
-    <a href="mailto:sergienkonikita77@gamil.com"><i class="far fa-envelope"></i>sergienkonikita77@gamil.com</a>
+    <a href="mailto:sergienkonikita77@gmail.com"><i class="far fa-envelope"></i>sergienkonikita77@gmail.com</a>
   </div>
   <div class="footer__bottom">
     <div class="container">
