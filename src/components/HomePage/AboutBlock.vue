@@ -6,7 +6,7 @@
     <br><br>Основной целью для себя в&nbsp;этой специальности вижу качественное и&nbsp;своевременное выполнение поставленной задачи.
     Все свободное время уделяю веб-разработке. Мне нравится то, что я&nbsp;делаю,&nbsp;готов к&nbsp;любым непредвиденным ситуациям.
     Активно совершенствуюсь в&nbsp;этой сфере и&nbsp;слежу за&nbsp;ее&nbsp;развитием. Знаю Html, CSS, JS. <br><br>Более подробно с&nbsp;моими навыками и&nbsp;умениями можно
-    ознакомиться в&nbsp;разделе <router-link to="/about">&laquo;Обо мне&raquo;</router-link>, а&nbsp;также просмотрев мои работы на&nbsp; <a href="https://github.com/brave312guide">GitHub</a> или в&nbsp;разделе <router-link to="/about">&laquo;Мои работы&raquo;</router-link>.</p>
+    ознакомиться в&nbsp;разделе <router-link to="/about">&laquo;Обо мне&raquo;</router-link>, а&nbsp;также просмотрев мои работы на&nbsp; <a href="https://github.com/brave312guide">GitHub</a> или в&nbsp;разделе <router-link to="/catalog">&laquo;Мои работы&raquo;</router-link>.</p>
     <SocialLinks></SocialLinks>
   </div>
   <img src="../../img/photo.jpg" alt="photo" class="about-block__photo">
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import SocialLinks from '../SocialLinks/SocialLinks'
+import SocialLinks from '../SocialLinks'
 export default {
   name: 'AboutBlock',
   components: {

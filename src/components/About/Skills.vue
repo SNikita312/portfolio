@@ -15,7 +15,7 @@
       <img src="../../img/css.png" alt="">
       <h3 class="skills__h3">CSS3</h3>
       <ul class="skills__list">
-        <li class="skills__li">Медиа запросы (адаптивная верстка)</li>
+        <li class="skills__li">Медиа-запросы (адаптивная верстка)</li>
         <li class="skills__li">Препроцессинг (Sass, Scss, Less)</li>
         <li class="skills__li">Flexbox, Grid  позиционирование</li>
         <li class="skills__li">CSS Анимация</li>
@@ -37,7 +37,7 @@
     </article>
     <article class="skills__skill">
       <img src="../../img/vue.png" alt="">
-      <h3 class="skills__h3">VueJs</h3>
+      <h3 class="skills__h3">Vue.js</h3>
       <ul class="skills__list">
         <li class="skills__li">Работа с компонетами</li>
         <li class="skills__li">Vue Route</li>

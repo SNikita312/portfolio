@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SocialLinks from '../SocialLinks/SocialLinks'
+import SocialLinks from '../SocialLinks'
 export default {
   name: 'Summary',
   components: {

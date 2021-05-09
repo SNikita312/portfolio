@@ -5,12 +5,12 @@
   @mouseout="setTop"
 >
   <img
-    v-bind:src="require('@/img/'+work.img)"
-    v-bind:alt="work.name"
+    :src="require('@/img/'+work.imgBig)"
+    :alt="work.name"
     :style="{top, transition}"
   >
   <div class="item__content">
-    <div class="item__h3">&laquo;{{ projectTitle }}&raquo;</div>
+    <div class="item__h3">&laquo;{{ work.name }}&raquo;</div>
     <router-link to="#">Подробнее</router-link>
   </div>
 </div>
@@ -29,21 +29,15 @@ export default {
     }
   },
   methods: {
-    setStyle (e) {
-      console.log(e.target.children)
-      this.transition = `top ${this.work.imgHeight / 400}3s linear`
-      this.top = `-${this.work.imgHeight - 280}px`
+    setStyle () {
+      this.transition = `top ${this.work.imgBigHeight / 400}3s linear`
+      this.top = `-${this.work.imgBigHeight - 280}px`
       this.active = !this.active
     },
     setTop () {
       this.top = '0'
       this.transition = 'none'
       this.active = !this.active
-    }
-  },
-  computed: {
-    projectTitle () {
-      return this.work.name.toUpperCase()
     }
   }
 }
@@ -66,18 +60,19 @@ export default {
     display: flex
     margin-top: 50%
     text-align: left
-    color: #c0daf8
+    color: #fff
     font-style: italic
     font-weight: 500
-    border-bottom: 1px solid #c0daf8
+    border-bottom: 1px solid #fff
     padding-bottom: 5px
     padding-left: 7px
     width: 30%
     &:hover
-      color: #fff
-      border-bottom: 1px solid #fff
+      color: #c0daf8
+      border-bottom: 1px solid #c0daf8
 .item__h3
   font-size: 2em
   text-align: right
   color: #fff
+  text-transform: uppercase
 </style>

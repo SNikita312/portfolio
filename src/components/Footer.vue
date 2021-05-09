@@ -6,14 +6,14 @@
   </div>
   <div class="footer__bottom">
     <div class="container">
-      {{ year.getFullYear() }} @SergienkoNikita
+      {{ year.getFullYear() }} Sergienko Nikita
     </div>
   </div>
 </footer>
 </template>
 
 <script>
-import SocialLinks from './SocialLinks/SocialLinks'
+import SocialLinks from './SocialLinks'
 export default {
   name: 'Footer',
   components: {

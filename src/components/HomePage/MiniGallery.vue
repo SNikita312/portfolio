@@ -26,64 +26,9 @@ export default {
   components: {
     block
   },
+  props: ['workBlocks'],
   data () {
     return {
-      workBlocks: [
-        {
-          id: 1,
-          active: true,
-          left: '0',
-          animationLeft: false,
-          animationRight: false,
-          works: [
-            {
-              id: 1,
-              name: 'brand',
-              img: 'proj1.jpg',
-              imgHeight: 965
-            },
-            {
-              id: 2,
-              name: 'game',
-              img: 'proj2.jpg',
-              imgHeight: 1345
-            },
-            {
-              id: 3,
-              name: 'fengo',
-              img: 'proj3.jpg',
-              imgHeight: 798
-            }
-          ]
-        }
-        // {
-        //   id: 2,
-        //   active: true,
-        //   left: '100%',
-        //   animationLeft: false,
-        //   animationRight: false,
-        //   works: [
-        //     {
-        //       id: 4,
-        //       name: 'brand',
-        //       img: 'proj2.jpg',
-        //       imgHeight: 965
-        //     },
-        //     {
-        //       id: 5,
-        //       name: 'game',
-        //       img: 'proj2.jpg',
-        //       imgHeight: 1345
-        //     },
-        //     {
-        //       id: 6,
-        //       name: 'fengo',
-        //       img: 'proj1.jpg',
-        //       imgHeight: 798
-        //     }
-        //   ]
-        // }
-      ],
       current: null,
       next: null
     }
@@ -98,7 +43,7 @@ export default {
           // eslint-disable-next-line no-return-assign
           setTimeout(() => vm.current.animationLeft = false, 200)
         } else {
-          this.next = this.workBlocks.find(el => el.id > this.current.id)
+          this.next = this.workBlocks.find(el => el.id === this.current.id + 1)
           this.current.left = '-100%'
           this.next.left = '0'
         }
@@ -109,7 +54,7 @@ export default {
         setTimeout(() => vm.current.animationLeft = false, 200)
       }
     },
-    moveLeft: function () {
+    moveLeft () {
       this.current = this.workBlocks.find(el => parseInt(el.left) === 0)
       if (this.workBlocks.length > 1) {
         if (this.current.id <= 1) {
@@ -118,7 +63,7 @@ export default {
           // eslint-disable-next-line no-return-assign
           setTimeout(() => vm.current.animationRight = false, 200)
         } else {
-          this.next = this.workBlocks.find(el => el.id < this.current.id)
+          this.next = this.workBlocks.find(el => el.id === this.current.id - 1)
           this.current.left = '100%'
           this.next.left = '0'
         }

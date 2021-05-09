@@ -5,10 +5,50 @@
     </div>
     <nav>
       <ul class="menu">
-        <li class="menu__li"><router-link class="menu__link" to="/">Главная</router-link></li>
-        <li class="menu__li"><router-link class="menu__link" to="/about">Обо мне</router-link></li>
-        <li class="menu__li"><router-link class="menu__link" to="/about">Мои работы</router-link></li>
-        <li class="menu__li"><router-link class="menu__link" to="/about">Контакты</router-link></li>
+        <router-link
+          to="/"
+          custom
+          v-slot="{ href, route, navigate, isActive, isExactActive }"
+        >
+          <li
+            :class="[isActive && 'router-link-active', isExactActive && 'active', 'menu__li']"
+          >
+            <a :href="href" class="menu__link">Главная</a>
+          </li>
+        </router-link>
+        <router-link
+          to="/about"
+          custom
+          v-slot="{ href, route, navigate, isActive, isExactActive }"
+        >
+          <li
+            :class="[isActive && 'router-link-active', isExactActive && 'active', 'menu__li']"
+          >
+            <a :href="href" class="menu__link">Обо мне</a>
+          </li>
+        </router-link>
+        <router-link
+          to="/catalog"
+          custom
+          v-slot="{ href, route, navigate, isActive, isExactActive }"
+        >
+          <li
+            :class="[isActive && 'router-link-active', isExactActive && 'active', 'menu__li']"
+          >
+            <a :href="href" class="menu__link">Мои работы</a>
+          </li>
+        </router-link>
+        <router-link
+          to="/contacts"
+          custom
+          v-slot="{ href, route, navigate, isActive, isExactActive }"
+        >
+          <li
+            :class="[isActive && 'router-link-active', isExactActive && 'active', 'menu__li']"
+          >
+            <a :href="href" class="menu__link">Контакты</a>
+          </li>
+        </router-link>
       </ul>
     </nav>
   </header>
@@ -30,6 +70,9 @@ export default {
   justify-content: space-between
   align-items: center
 .logo
+  transition: all .1s linear
+  &:hover
+    transform: scale(1.05)
   & > a
     font-family: 'Lobster', cursive
     font-size: 36px
@@ -43,8 +86,13 @@ export default {
     transition: all .1s linear
     &.active
       transform: translateY(-3px)
+      & > a
+        border-bottom: 2px solid #fff
+        &:hover
+          border-bottom: 2px solid #87baf6
     &:hover
       transform: translateY(-3px)
+      color: #87baf6
     &:last-child
       margin-right: 0
   &__link
@@ -55,8 +103,7 @@ export default {
     transition: all .1s linear
     text-transform: uppercase
     padding-bottom: 5px
-    &.active
-      border-bottom: 2px solid #fff
     &:hover
-      border-bottom: 2px solid #fff
+      border-bottom: 2px solid #87baf6
+      color: #87baf6
 </style>

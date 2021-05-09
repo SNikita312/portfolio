@@ -1,8 +1,6 @@
 <template>
-  <div class="about-page">
-    <div class="top">
-      <Header />
-    </div>
+  <div>
+    <HeaderLocal />
     <Summary />
     <Skills />
     <Additionally/>
@@ -11,16 +9,16 @@
 </template>
 
 <script>
-import Header from '../components/Header.vue'
-import Summary from '../components/AboutBlocks/Summary'
-import Skills from '../components/AboutBlocks/Skills'
+import HeaderLocal from '../components/HeaderLocal'
+import Summary from '../components/About/Summary'
+import Skills from '../components/About/Skills'
 import Footer from '../components/Footer'
-import Additionally from '../components/AboutBlocks/Additionally'
+import Additionally from '../components/About/Additionally'
 
 export default {
   name: 'About',
   components: {
-    Header,
+    HeaderLocal,
     Summary,
     Skills,
     Footer,
@@ -30,10 +28,5 @@ export default {
 </script>
 
 <style lang="sass">
-.top
-  background-color: #000
-.about-page
-  display: grid
-  height: 100vh
-  grid-template-rows: 100px 1fr 1fr
+
 </style>
