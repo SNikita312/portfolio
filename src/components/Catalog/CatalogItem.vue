@@ -55,16 +55,20 @@ export default {
       this.idx = index
     },
     stopAnim () {
-      clearInterval(this.change)
+      if (this.variantsBig) {
+        clearInterval(this.change)
+      }
     },
     startAnim () {
-      this.change = setInterval(() => {
-        if (this.idx === this.variantsBig.length) {
-          this.idx = 0
-        }
-        this.changeBigImg(this.idx)
-        this.idx++
-      }, 2000)
+      if (this.variantsBig) {
+        this.change = setInterval(() => {
+          if (this.idx === this.variantsBig.length) {
+            this.idx = 0
+          }
+          this.changeBigImg(this.idx)
+          this.idx++
+        }, 2000)
+      }
     }
   },
   mounted () {

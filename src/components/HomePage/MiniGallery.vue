@@ -128,7 +128,7 @@ export default {
       transform: translateX(5px)
 .item
   margin: 10px 0
-  height: 93%
+  height: 279px
   width: 30%
   overflow: hidden
   position: relative

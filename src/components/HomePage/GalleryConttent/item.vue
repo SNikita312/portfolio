@@ -1,7 +1,7 @@
 <template>
 <div
   :class="{item, active}"
-  @mouseover="(e) => setStyle(e)"
+  @mouseover="() => setStyle()"
   @mouseout="setTop"
 >
   <img
