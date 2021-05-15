@@ -30,7 +30,10 @@
     <p class="catalog__item-total" v-html="item.pageInfo"></p>
     <p class="catalog__item-total" v-html="item.about"></p>
     <p v-if="item.optional" class="catalog__item-optional" v-html="item.optional"></p>
-    <a class="catalog__item-btn" href="">Подробнее</a>
+    <router-link
+      :to="{name: 'Project', params: {id: item.id, project: item}}"
+      class="catalog__item-btn"
+    >Подробнее</router-link>
   </div>
 </article>
 </template>
@@ -42,7 +45,6 @@ export default {
   data () {
     return {
       imgDefault: this.bigImg,
-      clearInt: false,
       idx: null,
       change: null
     }
@@ -50,9 +52,12 @@ export default {
   methods: {
     changeBigImg (index) {
       this.imgDefault = this.variantsBig[index]
+      this.changeClass(index)
+      this.idx = index
+    },
+    changeClass (index) {
       this.$refs.ar.find(el => el.classList.contains('active')).classList.remove('active')
       this.$refs.ar[index].classList.add('active')
-      this.idx = index
     },
     stopAnim () {
       if (this.variantsBig) {
@@ -75,14 +80,11 @@ export default {
     if (this.variantsBig) {
       this.$refs.ar[0].classList.add('active')
       this.idx = this.$refs.ar.indexOf(this.$refs.ar.find(el => el.classList.contains('active')))
-      this.change = setInterval(() => {
-        if (this.idx === this.variantsBig.length) {
-          this.idx = 0
-        }
-        this.changeBigImg(this.idx)
-        this.idx++
-      }, 2000)
+      this.startAnim()
     }
+  },
+  beforeDestroy () {
+    this.stopAnim()
   }
 }
 </script>

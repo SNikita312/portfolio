@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     setStyle () {
-      this.transition = `top ${this.work.imgBigHeight / 400}3s linear`
+      this.transition = `top ${this.work.imgBigHeight / 400}s linear`
       this.top = `-${this.work.imgBigHeight - 280}px`
       this.active = !this.active
     },
