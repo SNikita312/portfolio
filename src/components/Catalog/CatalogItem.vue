@@ -22,6 +22,10 @@
         <img :src="require('@/img/Catalog/'+img)" :alt="index">
       </div>
     </div>
+    <router-link
+      :to="{name: 'Project', params: {id: item.id, project: item}}"
+      class="catalog__item-btn"
+    >Подробнее</router-link>
   </div>
   <div class="catalog__item-content">
     <h3 class="catalog__item-title" v-html="item.title"></h3>
@@ -100,17 +104,24 @@ export default {
     height: 100%
     display: flex
     flex-direction: column
-    justify-content: flex-end
+    justify-content: flex-start
+    width: 50%
+    & > a
+      display: none
   &-imgBig
     max-height: 250px
-    width: 216px
     overflow: hidden
     box-shadow: -1px 2px 8px 0px rgba(0, 0, 0, 0.2)
+    & > img
+      width: 100%
   &-imgSmall
     max-height: 65px
     overflow: hidden
+    width: 24%
     transition: all .2s linear
     box-shadow: -1px 2px 8px 0px rgba(0, 0, 0, 0.2)
+    & > img
+      width: 100%
     &:hover
       cursor: pointer
       transform: translateY(-10px)
@@ -128,6 +139,7 @@ export default {
   &-content
     display: flex
     flex-direction: column
+    justify-content: space-between
     width: 50%
     padding: 0 10px
   &-adaptive
@@ -173,4 +185,33 @@ export default {
       transform: scale(.97)
     &:active
       transform: scale(.95)
+
+@media screen and (max-width: 1190px)
+  .catalog__item-optional
+    display: none
+@media screen and (max-width: 940px)
+  .catalog__item-content > p:nth-child(4)
+    display: none
+@media screen and (max-width: 748px)
+  .catalog__item
+    width: 80%
+  .catalog__item-content > p:nth-child(4)
+    display: block
+@media screen and (max-width: 520px)
+  .catalog__item
+    flex-direction: column-reverse
+    width: 100%
+    &-img
+      width: 80%
+      align-self: center
+      & > a
+        display: block
+    &-content
+      width: 100%
+      & > a
+        display: none
+    &-total
+      display: none
+  .catalog__item-content > p:nth-child(4)
+    display: none
 </style>

@@ -50,4 +50,40 @@ export default {
     border-radius: 50%
     border: 2px solid #0f5086
     padding: 2px
+
+@media screen and (max-width: 940px)
+  .summary
+    &__h1
+      font-size: 1.75em
+      margin: 20px 0
+    &__h4
+      margin-bottom: 15px
+      font-size: 1em
+    &__h2
+      margin-top: 50px
+      font-size: 2em
+    &-photo
+      height: 250px
+      margin-top: 20px
+
+@media screen and (max-width: 748px)
+  .summary
+    &__h1
+      font-size: 1.3em
+    &__h4
+      font-size: .8em
+      letter-spacing: -.03em
+    &-photo
+      height: 200px
+      margin-top: 20px
+
+@media screen and (max-width: 520px)
+  .summary-photo
+    height: 175px
+  .summary__h2
+    display: none
+  .summary__content > a
+    font-size: .8em
+    & > i
+      margin-right: 5px
 </style>

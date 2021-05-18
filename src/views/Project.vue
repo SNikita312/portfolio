@@ -1,7 +1,16 @@
 <template>
   <div>
     <HeaderLocal />
-    <section v-if="render" class="project">
+    <div class="bread-crumbs">
+      <div class="container">
+        <div class="bread-crumbs__content">
+          <router-link to="/catalog"><i class="fa fa-arrow-left"></i>Вернутся в каталог</router-link>
+          <router-link to="/">На главную<i class="fa fa-arrow-right"></i></router-link>
+        </div>
+      </div>
+    </div>
+    <loader v-if="!render"/>
+    <section v-else class="project">
       <div class="container">
         <h1 class="project__title" v-html="project.title"></h1>
         <h3 v-if="project.adaptive" class="project__adaptive true">Проэкт адаптивный</h3>
@@ -38,7 +47,7 @@
               v-for="photo in project.images"
               :key="photo.id"
               :src="require(`@/img/${project.name}/`+photo.small)"
-              :class="{active: photo.active}"
+              :class="{active: photo.active, image: true}"
               @click="changeSlide(photo.id)"
               alt="photo.id">
           </div>
@@ -53,7 +62,7 @@
 
 import HeaderLocal from '../components/HeaderLocal'
 import Footer from '../components/Footer'
-
+import loader from '../components/loader'
 export default {
   name: 'Project',
   data () {
@@ -67,12 +76,14 @@ export default {
       startMouse: 0,
       savedX: 0,
       transition: 'none',
-      animation: null
+      animation: null,
+      similar: []
     }
   },
   components: {
     HeaderLocal,
-    Footer
+    Footer,
+    loader
   },
   props: ['id'],
   methods: {
@@ -86,8 +97,8 @@ export default {
         this.current = this.startMouse
         if (this.current > 50) {
           this.current = 0
-        } else if (this.current < -((354 * this.project.images.length) - (document.documentElement.clientWidth - 300) + 70)) {
-          this.current = -((354 * this.project.images.length) - (document.documentElement.clientWidth - 300) + 40)
+        } else if (this.current < -(((document.querySelector('.image').clientWidth + 20) * this.project.images.length) - document.querySelector('.carousel__inner').clientWidth + 70)) {
+          this.current = -(((document.querySelector('.image').clientWidth + 20) * this.project.images.length) - document.querySelector('.carousel__inner').clientWidth + 40)
         }
       }
     },
@@ -105,8 +116,8 @@ export default {
       } else {
         this.currentSlide = this.project.images.find(el => el.id === (this.currentSlide.id + 1))
         this.toggleClass()
-        if (((this.currentSlide.id * 354) + 20) > ((document.documentElement.clientWidth - 300) + Math.abs(this.current))) {
-          const difference = ((this.currentSlide.id * 354) + 20) - ((document.documentElement.clientWidth - 300) + Math.abs(this.current))
+        if (((this.currentSlide.id * (document.querySelector('.image').clientWidth + 20)) + 20) > (document.querySelector('.carousel__inner').clientWidth + Math.abs(this.current))) {
+          const difference = ((this.currentSlide.id * (document.querySelector('.image').clientWidth + 20)) + 20) - (document.querySelector('.carousel__inner').clientWidth + Math.abs(this.current))
           this.transition = 'left .3s linear'
           this.current += -difference
           this.savePos()
@@ -119,14 +130,14 @@ export default {
       if (this.currentSlide.id === 1) {
         this.currentSlide = this.project.images.find(el => el.id === this.project.images.length)
         this.transition = 'left .6s linear'
-        this.current = -((354 * this.project.images.length) - (document.documentElement.clientWidth - 300) + 40)
+        this.current = -(((document.querySelector('.image').clientWidth + 20) * this.project.images.length) - document.querySelector('.carousel__inner').clientWidth + 40)
         this.savePos()
         this.toggleClass()
       } else {
         this.currentSlide = this.project.images.find(el => el.id === (this.currentSlide.id - 1))
         this.toggleClass()
-        if (((this.currentSlide.id - 1) * 354) < Math.abs(this.current)) {
-          const difference = Math.abs(this.current) - (this.currentSlide.id - 1) * 354
+        if (((this.currentSlide.id - 1) * (document.querySelector('.image').clientWidth + 20)) < Math.abs(this.current)) {
+          const difference = Math.abs(this.current) - (this.currentSlide.id - 1) * (document.querySelector('.image').clientWidth + 20)
           this.transition = 'left .3s linear'
           this.current += difference
           this.savePos()
@@ -165,9 +176,13 @@ export default {
       this.project.images[0].active = true
       this.startAnimation()
     })
+    this.getJson('https://raw.githubusercontent.com/brave312guide/Carousele/main/API/portfolio.json').then(data => {
+      this.similar = data.filter(el => el.id !== parseInt(this.id))
+    })
   },
   beforeDestroy () {
     this.stopAnimation()
+    this.project = null
   }
 }
 </script>
@@ -255,4 +270,104 @@ export default {
         box-shadow: 0 18px 8px 0 rgb(34 60 80 / 20%)
       &:first-child
         margin-left: 20px
+
+.bread-crumbs
+  background: rgb(190,197,251)
+  background: linear-gradient(0deg, rgba(190,197,251,1) 0%, rgba(23,27,58,1) 88%)
+  height: 50px
+  &__content
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 50px
+    & > a
+      color: #fff
+      margin: 0 40px
+      font-style: italic
+      &:first-child > i
+        margin-right: 10px
+      &:last-child > i
+        margin-left: 10px
+      & > i
+        font-size: .7em
+@media screen and (max-width: 1190px)
+  .project
+    &__title
+      font-size: 2.2em
+    &__adaptive
+      font-size: 1em
+    &__text
+      font-size: 1em
+  .carousel
+    padding: 60px 70px
+@media screen and (max-width: 940px)
+  .project
+    &__title
+      font-size: 2em
+    &__slide
+      max-width: 728px
+      & > img
+        max-width: 500px
+  .carousel
+    padding: 30px 50px
+    min-height: 200px
+    &__block,
+    &__inner
+      height: 150px
+    &__block > img
+      max-width: 250px
+@media screen and (max-width: 748px)
+  .project
+    &__title
+      font-size: 2em
+    &__slide
+      max-width: 500px
+      & > img
+        max-width: 350px
+      & > p
+        font-size: .9em
+  .project__arr_right
+    right: 25px
+  .project__arr_left
+    left: 25px
+  .carousel
+    padding: 30px 25px
+    &__block,
+    &__inner
+      height: 120px
+    &__block > img
+      max-width: 200px
+  .bread-crumbs__content > a
+    margin: 0
+    font-size: .8em
+@media screen and (max-width: 520px)
+  .project
+    &__title
+      font-size: 1.5em
+    &__adaptive
+      font-size: .8em
+    &__text
+      font-size: .8em
+    &__link
+      font-size: .8em
+    &__slide
+      max-width: 300px
+      & > img
+        max-width: 220px
+      & > p
+        font-size: .9em
+  .project__arr_right
+    font-size: 1em
+    right: 15px
+  .project__arr_left
+    font-size: 1em
+    left: 15px
+  .carousel
+    padding: 20px 0
+    min-height: 130px
+    &__block > img
+      max-width: 150px
+    &__block,
+    &__inner
+      height: 100px
 </style>

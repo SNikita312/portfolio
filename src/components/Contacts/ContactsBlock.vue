@@ -49,7 +49,7 @@ export default {
     flex-direction: column
     & > a
       margin-bottom: 10px
-      font-size: 20px
+      font-size: 1.25em
       color: #000
       &:last-child
         margin-bottom: 0
@@ -67,4 +67,36 @@ export default {
   align-self: flex-end
 .mail
   align-self: flex-end
+@media screen and (max-width: 1190px)
+  .contacts__links
+    width: 60%
+@media screen and (max-width: 940px)
+  .contacts__links
+    width: 70%
+@media screen and (max-width: 748px)
+  .contacts__title
+    font-size: 1.5em
+  .contacts__text
+    font-size: .9em
+  .contacts__links
+    width: 95%
+  .contacts__apps,
+  .contacts__local
+    & > a
+      font-size: 1em
+      margin-bottom: 30px
+      &:last-child
+        margin-bottom: 0
+
+@media screen and (max-width: 520px)
+  .contacts__links
+    flex-direction: column
+  .contacts__apps
+    margin-bottom: 30px
+  .phone,
+  .mail,
+  .telegram,
+  .whatsapp,
+  .viber
+    align-self: center
 </style>

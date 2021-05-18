@@ -21,6 +21,7 @@ export default {
 <style lang="sass">
 #app
   font-family: 'Roboto Condensed', sans-serif
+  background-color: #fff
 
 *
   margin: 0

@@ -24,7 +24,7 @@ export default {
 .contacts-page
   display: grid
   height: 100vh
-  grid-template-rows: 100px 1fr
+  grid-template-rows: auto 1fr auto
   background-color: #eee
   text-align: center
 </style>

@@ -24,4 +24,20 @@ export default {
   background-size: cover
   background-position: bottom
   height: 750px
+
+@media screen and (max-width: 1190px)
+  .inner
+    height: 625px
+    background-image: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,0.6615021008403361) 10%), url(../../img/1024px/inner-bg-1024.jpg)
+
+@media screen and (max-width: 940px)
+  .inner
+    height: 500px
+
+@media screen and (max-width: 748px)
+  .inner
+    height: 300px
+@media screen and (max-width: 520px)
+  .inner
+    overflow: hidden
 </style>

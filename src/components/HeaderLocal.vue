@@ -17,4 +17,8 @@ export default {
 <style lang="sass">
 .top
   background-color: #171b3a
+@media screen and (max-width: 520px)
+  .top
+    overflow: hidden
+    height: 130px
 </style>

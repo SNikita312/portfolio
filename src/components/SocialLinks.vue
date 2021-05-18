@@ -22,11 +22,14 @@ export default {
     &:active
       transform: scale(.9)
   & > li > a
-    font-size: 40px
+    font-size: 2.5em
     color: #87baf6
     transition: color .1s linear
     &:hover
       color: #34495e
     &:active
       color: #ccc
+@media screen and (max-width: 748px)
+  .about-block__social
+    justify-content: center
 </style>

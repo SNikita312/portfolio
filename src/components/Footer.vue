@@ -67,4 +67,18 @@ export default {
       transform: rotate(45deg)
       border-top: 1px solid #183749
       border-left: 1px solid #183749
+
+@media screen and (max-width: 520px)
+  .footer__contact
+    flex-direction: column-reverse
+    justify-content: space-between
+  .footer__contact > ul > li > a
+    font-size: 1.8em
+  .footer__contact > a
+    margin-bottom: 20px
+    font-size: 1em
+    & > i
+      font-size: 1em
+  .footer__bottom:before
+    left: 46%
 </style>

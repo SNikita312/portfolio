@@ -89,4 +89,11 @@ export default {
       &:hover
         cursor: pointer
         color: #3e5f7f
+@media screen and (max-width: 748px)
+  .catalog__block
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    & > .catalog__item:nth-child(odd)
+      margin-right: 0
 </style>

@@ -2,6 +2,12 @@
 <section class="skills">
   <div class="skills__content container">
     <h1 class="skills__title">Ключевые навыки:</h1>
+    <div class="animation">
+      <i class="fa fa-hand-point-down animation-finger"></i>
+      <div class="animation-icon">
+        <i class="fab fa-html5"></i>
+      </div>
+    </div>
     <article class="skills__skill">
       <img src="../../img/html.png" alt="">
       <h3 class="skills__h3">HTML5</h3>
@@ -62,6 +68,8 @@ export default {
 </script>
 
 <style lang="sass">
+.animation
+  display: none
 .skills
   background-color: #eeeeee
   padding: 50px 0
@@ -91,4 +99,46 @@ export default {
     text-align: center
     font-size: 15px
     color: #3e5f7f
+
+@media screen and (max-width: 748px)
+  .skills__skill
+    width: 50%
+
+@media screen and (max-width: 520px)
+  @keyframes ping-finger
+    50%
+      transform: translateY(10px)
+    100%
+      transform: translateY(0)
+  @keyframes ping-icon
+    50%
+      transform: rotate3d(1, 0, 0, 60deg)
+    100%
+      transform: rotate3d(1, 0, 0, 0)
+  .skills__skill
+    width: 100%
+    &:hover > ul
+      display: block
+    & > ul
+      display: none
+  .skills__content
+    position: relative
+  .animation
+    display: flex
+    flex-direction: column
+    align-items: center
+    position: absolute
+    top: -15px
+    right: 0
+    opacity: .6
+    &-finger
+      font-size: 2.5em
+      color: #847e7e
+      animation: ping-finger 1s infinite
+      z-index: 10
+    &-icon
+      animation: ping-icon 1s infinite
+    &-icon > i
+      color: #eb5722
+      font-size: 1.75em
 </style>

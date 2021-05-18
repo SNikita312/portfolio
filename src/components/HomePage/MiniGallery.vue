@@ -126,15 +126,30 @@ export default {
       transform: translateX(-5px)
     &.animationRight
       transform: translateX(5px)
-.item
-  margin: 10px 0
-  height: 279px
-  width: 30%
-  overflow: hidden
-  position: relative
-  & > img
-    width: 100%
-    position: absolute
-    left: 0
 
+@media screen and (max-width: 1190px)
+  .mini-gallery__arrLeft
+    left: 10%
+  .mini-gallery__arrRight
+    right: 10%
+
+@media screen and (max-width: 748px)
+  .mini-gallery
+    padding-top: 40px
+    &__carousel
+      height: 200px
+
+@media screen and (max-width: 520px)
+  .mini-gallery
+    &__title
+      font-size: 1.5em
+    &__flex
+      flex-direction: column
+      align-items: center
+    &__carousel
+      height: 500px
+  .mini-gallery__arrLeft
+    left: 7%
+  .mini-gallery__arrRight
+    right: 7%
 </style>
