@@ -1,11 +1,14 @@
 <template>
   <div class="inner__content container">
     <div class="inner__text">
-      <h1 class="inner__h1" >Адаптивная</h1>
+      <h1 class="inner__h1" >Frontend-разботка</h1>
+<!--      <h1 class="inner__h1">Кроссбраузерная</h1>-->
+<!--      <h1 class="inner__h1">Верстка</h1>-->
+      <p class="inner__p">под все типы устройств</p>
+      <h1 class="inner__h1">Адаптивная,</h1>
       <h1 class="inner__h1">Кроссбраузерная</h1>
-      <h1 class="inner__h1">Верстка</h1>
-      <p class="inner__p">под любые типы устройств</p>
-      <p class="inner__p">Использование Flexbox и Grid</p>
+      <h1 class="inner__h1">верстка</h1>
+      <p class="inner__p">Flexbox и Grid</p>
       <h2 v-if="mobile" class="inner__h2">Верстка отдельных компонентов</h2>
       <p v-if="mobile" class="inner__p">Использование Vanilla.js, Vue.js</p>
     </div>

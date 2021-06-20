@@ -4,7 +4,7 @@
     <div class="bread-crumbs">
       <div class="container">
         <div class="bread-crumbs__content">
-          <router-link to="/catalog"><i class="fa fa-arrow-left"></i>Вернутся в каталог</router-link>
+          <router-link to="/catalog"><i class="fa fa-arrow-left"></i>Вернуться в каталог</router-link>
           <router-link to="/">На главную<i class="fa fa-arrow-right"></i></router-link>
         </div>
       </div>
@@ -13,10 +13,10 @@
     <section v-else class="project">
       <div class="container">
         <h1 class="project__title" v-html="project.title"></h1>
-        <h3 v-if="project.adaptive" class="project__adaptive true">Проэкт адаптивный</h3>
-        <h3 v-else class="project__adaptive">Проэкт не адаптивный</h3>
+        <h3 v-if="project.adaptive" class="project__adaptive true">Проект адаптивный</h3>
+        <h3 v-else class="project__adaptive">Проект не адаптивный</h3>
         <p class="project__text" v-html="project.text"></p>
-        <a :href="project.path"  class="project__link">перейти на страницу проекта <i class="fas fa-chevron-right"></i></a>
+        <a :href="project.path"  class="project__link" target="_blank">перейти на страницу проекта <i class="fas fa-chevron-right"></i></a>
       </div>
       <figure class="project__slide" @mouseover="stopAnimation" @mouseleave="startAnimation">
         <img
